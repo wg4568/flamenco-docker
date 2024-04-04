@@ -1,3 +1,3 @@
 #! /bin/bash
 
-sudo docker build -t flamenco-test .
+sudo docker build -t flamenco .
