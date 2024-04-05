@@ -1,0 +1,19 @@
+services:
+    flamenco:
+        container_name: flamenco
+        image: flamenco
+        ports:
+          - "8080:8080/tcp"
+        restart: unless-stopped
+        volumes:
+          - shared_storage:/mnt/flamenco
+          - ./app/flamenco-manager.yaml:/opt/flamenco/flamenco-manager.yaml
+          - ./app/scripts:/opt/flamenco/scripts
+
+volumes:
+    shared_storage:
+        driver: local
+        driver_opts:
+            type: cifs
+            o: username=${SHARE_USER},password=${SHARE_PASSWORD}
+            device: ${SHARE_NAME}

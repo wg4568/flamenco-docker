@@ -1,8 +1,12 @@
 FROM alpine:3.14
+
+ARG FLAMENCO_VERSION=flamenco-3.4-linux-amd64
+
+
 WORKDIR /app
-COPY src/init.sh .
-RUN chmod +x init.sh
-RUN sh init.sh
-RUN rm init.sh
-ENTRYPOINT /opt/flamenco/flamenco-manager
-EXPOSE 8080
+ADD src/init.sh .
+ADD src/entrypoint.sh .
+RUN sh init.sh ${FLAMENCO_VERSION}
+
+ENTRYPOINT sh entrypoint.sh
+# ENTRYPOINT tail -f /dev/null
