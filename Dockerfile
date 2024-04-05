@@ -1,6 +1,6 @@
 FROM alpine:3.14
-COPY get-flamenco.sh /opt/get-flamenco.sh
-RUN chmod +x /opt/get-flamenco.sh
-RUN sh /opt/get-flamenco.sh
-ENTRYPOINT /opt/flamenco/flamenco-manager
+COPY flamenco-*.sh /opt/
+RUN chmod +x /opt/flamenco-*.sh
+RUN sh /opt/flamenco-fetch.sh
+ENTRYPOINT sh /opt/flamenco-start.sh
 EXPOSE 8080
