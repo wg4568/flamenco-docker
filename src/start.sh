@@ -1,4 +1,4 @@
 #! /bin/bash
 
-cd /opt/flamenco/
+cd /app/flamenco/
 ./flamenco-manager
