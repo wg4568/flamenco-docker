@@ -3,5 +3,6 @@ WORKDIR /app
 COPY src/*.sh .
 RUN chmod +x *.sh
 RUN sh init.sh
-ENTRYPOINT sh start.sh
+RUN rm init.sh
+ENTRYPOINT /opt/flamenco/flamenco-manager
 EXPOSE 8080
